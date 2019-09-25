@@ -1,0 +1,94 @@
+<html lang="en">
+   
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+        <head>
+          <meta charset="utf-8">
+        
+          <title>Thoranin Chaiyakam | Index</title>
+          <meta name="description" content="Thoranin Chaiyakam | Index">
+          <meta name="author" content="Thoranin">
+          
+          <!-- <link rel="stylesheet" href="index.css"> -->
+        
+        </head>
+        
+        <body>
+          <!-- The core Firebase JS SDK is always required and must be listed first -->
+          <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-auth.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-firestore.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+          <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+              apiKey: "AIzaSyArQugx6EES_W_EPHK515hCSHfoRBlEH1g",
+              authDomain: "thoranin-87635.firebaseapp.com",
+              databaseURL: "https://thoranin-87635.firebaseio.com",
+              projectId: "thoranin-87635",
+              storageBucket: "thoranin-87635.appspot.com",
+              messagingSenderId: "786664275019",
+              appId: "1:786664275019:web:585d078d77cb4f653aa1ce"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+          </script>
+
+
+
+          <div id="signin_section">
+            <div v-if="visibility" >
+                <input v-model='username' type="text" placeholder="username">
+                <input v-model='password' type="password" placeholder="password">
+                <input type="button" v-on:click="Login_procedure" value="Login">
+            </div>
+            <div v-else>
+                Hello, {{username}}
+                <input type="button" v-on:click="Logout_procedure" value="Logout">
+                <br><br>
+
+                <div>
+                  Edit your data:<br>
+                  NAME  &nbsp&nbsp&nbsp&nbsp:<input v-model='act_name' type="text" > <br>
+                  SURNAME &nbsp&nbsp&nbsp&nbsp:<input v-model='act_surname' type="text" > <br>
+                  TEL_NO &nbsp&nbsp&nbsp&nbsp:<input v-model='telephone_number' type="text" > <br>
+                  AGE &nbsp&nbsp&nbsp&nbsp:<input v-model='age' type="text"> <br>
+                  ADDRESS &nbsp&nbsp&nbsp&nbsp:<input v-model='address' type="text"> <br>
+                  <input type="button" v-on:click="profilesave_procedure" Value="Submit">
+                </div>
+
+                <p v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                      <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                  </p>
+            </div>
+                  
+          </div>
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+          <div id="Usermanager">
+            <button v-on:click="toggle_manager">{{button_dialog}}</button>
+            <div v-if="manager_visible">
+                <select v-model="selected" multiple>
+                    <option v-for="user in usersinthehouse">{{user.email}}</option>
+                </select>
+
+            </div>
+          </div>
+
+
+
+          <script src="index.js"></script>
+
+        </body>
+
+        </html>
